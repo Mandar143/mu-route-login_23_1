@@ -1,0 +1,135 @@
+<form class="form-horizontal" role="form" method="POST" action="/register">
+  <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+          <h2>Register New User</h2>
+          <hr>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-3 field-label-responsive">
+          <label for="name">Name</label>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group">
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                  <input type="text" name="name" class="form-control" id="name"
+                         placeholder="John Doe" required autofocus #name value="{{nm}}">
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div class="form-control-feedback">
+                  <span class="text-danger align-middle">
+                      <!-- Put name validation error messages here -->
+                  </span>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-3 field-label-responsive">
+          <label for="email">E-Mail Address</label>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group">
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                  <input type="text" name="email" class="form-control" id="email"
+                         placeholder="you@example.com" required autofocus #email value="{{em}}">
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div class="form-control-feedback">
+                  <span class="text-danger align-middle">
+                      <!-- Put e-mail validation error messages here -->
+                  </span>
+          </div>
+      </div>
+  </div>
+    <div class="row">
+      <div class="col-md-3 field-label-responsive">
+          <label for="email">State</label>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group">
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                   <select class="form-control" #state value="{{st}}">
+                       <option value="-1">-----Select-----</option>
+                        <option value="MH">MH</option>   
+                    </select> 
+              </div>
+          </div>
+      </div>
+      
+  </div>
+  <div class="row">
+      <div class="col-md-3 field-label-responsive">
+          <label for="password">Password</label>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group">
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                  <input type="password" name="password" class="form-control" id="password"
+                         placeholder="Password" required #password>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div class="form-control-feedback">
+                  <span class="text-danger align-middle">
+                      <i class="fa fa-close"> Example Error Message</i>
+                  </span>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-3 field-label-responsive">
+          <label for="password">Confirm Password</label>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group">
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem">
+                      <i class="fa fa-repeat"></i>
+                  </div>
+                  <input type="password" name="password-confirmation" class="form-control"
+                         id="password-confirm" placeholder="Password" required>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-3">{{resMsg}}</div>
+      <div class="col-md-6">
+          <button type="button" class="btn btn-success" (click)="onRegister(name.value,email.value,state.value,password.value)"><i class="fa fa-user-plus" ></i>  Register</button>
+          <button type="button" class="btn btn-prmary" (click)="onEdit(name.value,email.value,state.value,password.value)"><i class="fa fa-user-plus" ></i>  Edit</button>
+          <button type="button" class="btn btn-danger" (click)="onDelete(name.value,email.value,state.value,password.value)"><i class="fa fa-user-plus" ></i>  Delete</button>
+      </div>
+      <div class="col-md-6">
+             <a href="/"><i class="fa fa-user-plus"></i> login</a>
+      </div>
+  </div>
+</form>
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-borderd">
+                <tr >
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>State</th>
+                </tr>    
+                <tr *ngFor="let state of states" (click)="onSelect1(state.email)" style="cursor:pointer">
+                    <td>{{state.name}}</td>
+                    <td>{{state.email}}</td>
+                    <td>{{state.state}}</td>
+                </tr>
+            </table>     
+        </div>   
+    </div>
+</div>
+    
